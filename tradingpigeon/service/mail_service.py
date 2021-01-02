@@ -9,13 +9,13 @@ class MailService:
     """
 
     def set_mail_message(
-        self, from_mail: str, to_mail: str, subject: str, text: str
+        self, from_mail: str, to_mail_list: list, subject: str, text: str
     ) -> MIMEText:
         mail_object = MIMEText(text)
 
         mail_object["Subject"] = subject
         mail_object["From"] = from_mail
-        mail_object["To"] = to_mail
+        mail_object["To"] = ", ".join(to_mail_list)
 
         return mail_object
 
@@ -23,7 +23,7 @@ class MailService:
         self,
         from_mail: str,
         from_mail_password: str,
-        to_mail: str,
+        to_mail_list: list,
         subject: str,
         text: str,
     ):
@@ -31,7 +31,9 @@ class MailService:
         메일을 송신합니다.
         """
 
-        mail_object = self.set_mail_message(from_mail, to_mail, subject, text)
+        mail_object = self.set_mail_message(
+            from_mail, to_mail_list, subject, text
+        )
 
         response = {}
 
@@ -42,13 +44,13 @@ class MailService:
             server.starttls()  # TLS 보안 처리
             server.login(from_mail, from_mail_password)
             response = server.sendmail(
-                from_mail, to_mail, mail_object.as_string()
+                from_mail, to_mail_list, mail_object.as_string()
             )
             server.close()  # SMTP 서버 연결 종료
 
         return response
 
-    def send_mail_by_default(self, to_mail: str, subject: str, text: str):
+    def send_mail_by_default(self, to_mail_list: list, subject: str, text: str):
         """
         환경 변수의 기본 email로 메일을 송신합니다.
         """
@@ -56,7 +58,7 @@ class MailService:
         response = self.send_mail(
             app.config["EMAIL_ID"],
             app.config["EMAIL_PASSWORD"],
-            to_mail,
+            to_mail_list,
             subject,
             text,
         )

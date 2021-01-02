@@ -28,7 +28,9 @@ def mail_test():
 
     request_json = request.get_json()
     response = mail_service.send_mail_by_default(
-        request_json["toMail"], request_json["subject"], request_json["text"]
+        request_json["toMailList"],
+        request_json["subject"],
+        request_json["text"],
     )
 
     return response
