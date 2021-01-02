@@ -11,6 +11,10 @@ CONFIG_NAME_MAPPER = {
 
 
 def create_app(flask_config: str = "local") -> Flask:
+    """
+    flask app을 생성합니다.
+    create flask app.
+    """
     app.config.from_object(CONFIG_NAME_MAPPER[flask_config])
     RequestID(app)
     return app
@@ -18,12 +22,20 @@ def create_app(flask_config: str = "local") -> Flask:
 
 @app.route("/", methods=["GET"])
 def hello_world():
+    """
+    임시 : 홈
+    temp : Home
+    """
     print(app.config["EMAIL_ID"])
     return "Hello, World!"
 
 
 @app.route("/api/mail/naver", methods=["POST"])
 def mail_test():
+    """
+    임시 : mail 전송 API
+    temp : sending mail API
+    """
     mail_service = MailService()
 
     request_json = request.get_json()

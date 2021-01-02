@@ -11,6 +11,10 @@ class MailService:
     def set_mail_message(
         self, from_mail: str, to_mail_list: list, subject: str, text: str
     ) -> MIMEText:
+        """
+        전송할 메일의 메시지 object를 정의합니다.
+        set a message object of mail to send.
+        """
         mail_object = MIMEText(text)
 
         mail_object["Subject"] = subject
@@ -28,7 +32,8 @@ class MailService:
         text: str,
     ):
         """
-        메일을 송신합니다.
+        메일을 전송합니다.
+        send a mail.
         """
 
         mail_object = self.set_mail_message(
@@ -53,6 +58,7 @@ class MailService:
     def send_mail_by_default(self, to_mail_list: list, subject: str, text: str):
         """
         환경 변수의 기본 email로 메일을 송신합니다.
+        send a mail by default email of env.
         """
 
         response = self.send_mail(
