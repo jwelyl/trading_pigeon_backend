@@ -1,0 +1,12 @@
+{
+  "include": [
+    "tradingpigeon"
+  ],
+  "exclude": [
+    "doc"
+  ],
+  "reportTypeshedErrors": true,
+  "reportMissingImports": false,
+  "pythonVersion": "3.8",
+  "pythonPlatform": "Darwin"
+}

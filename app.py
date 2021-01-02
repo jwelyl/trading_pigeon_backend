@@ -1,8 +1,11 @@
+import os
 from flask import Flask
+from tradingpigeon.main import create_app
 
-app = Flask(__name__)
+try:
+    config = os.environ["FLASK_CONFIG"]
+except KeyError:
+    config = "local"
 
-
-@app.route("/")
-def hello_world():
-    return "Hello, World!"
+app: Flask = create_app(flask_config=config)
+print(f" * App Mode : {config}")
