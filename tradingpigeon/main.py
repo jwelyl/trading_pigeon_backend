@@ -17,4 +17,5 @@ def create_app(flask_config: str = "local") -> Flask:
 
 @app.route("/")
 def hello_world():
+    print(app.config["EMAIL_ID"])
     return "Hello, World!"

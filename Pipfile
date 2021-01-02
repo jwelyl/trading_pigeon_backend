@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-request-id-header = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
