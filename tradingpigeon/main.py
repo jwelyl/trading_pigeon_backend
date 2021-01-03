@@ -26,7 +26,7 @@ def hello_world():
     임시 : 홈
     temp : Home
     """
-    print(app.config["EMAIL_ID"])
+    # TODO : REST 라우팅
     return "Hello, World!"
 
 
