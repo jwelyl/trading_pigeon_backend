@@ -17,7 +17,16 @@ def create_app(flask_config: str = "local") -> Flask:
     """
     app.config.from_object(CONFIG_NAME_MAPPER[flask_config])
     RequestID(app)
+    register_extensions(app)
     return app
+
+
+def register_extensions(app: Flask):
+    from tradingpigeon.extension import db, ma, migrate
+
+    db.init_app(app)
+    migrate.init_app(app, db)
+    ma.init_app(app)
 
 
 @app.route("/", methods=["GET"])

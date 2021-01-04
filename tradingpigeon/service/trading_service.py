@@ -3,6 +3,10 @@ from pandas_datareader import data
 
 class TradingService:
     def getTradingInfo(self, code: str, start_date: str, end_date: str):
+        """
+        임시 : yahoo financial 정보 불러오기
+        Temp : Getting information of yahoo financial
+        """
         # TODO : code 불러오기, 코스피는 .ks, 코스닥은 .kq
         # TODO 2 : 일단 static한 excel 불러오기
         # TODO 3 : DB 연결 이후에는 코드명 전부 저장

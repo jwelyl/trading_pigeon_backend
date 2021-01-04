@@ -15,6 +15,7 @@ class BaseConfig(object):
     NAVER_EMAIL_SMTP_PORT = 587
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
     REQUEST_ID_UNIQUE_VALUE_PREFIX = "API"
+    SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(PROJECT_ROOT, "example.db")}?check_same_thread=False'
 
 
 class LocalConfig(BaseConfig):

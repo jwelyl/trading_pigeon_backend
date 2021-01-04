@@ -8,6 +8,12 @@ flask = "*"
 flask-request-id-header = "*"
 python-dotenv = "*"
 pandas-datareader = "*"
+flask-sqlalchemy = "*"
+flask-marshmallow = "*"
+inflection = "*"
+marshmallow-enum = "*"
+flask-migrate = "*"
+marshmallow-sqlalchemy = "*"
 
 [dev-packages]
 pylint = "*"

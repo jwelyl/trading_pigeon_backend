@@ -9,3 +9,10 @@ except KeyError:
 
 app: Flask = create_app(flask_config=config)
 print(f" * App Mode : {config}")
+
+from tradingpigeon.extension import db
+from tradingpigeon.mappings import models
+
+with app.app_context():
+    db.create_all()
+    db.session.commit()
